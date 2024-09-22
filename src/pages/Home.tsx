@@ -11,6 +11,7 @@ import { setIsInitial } from '../store/reducers/appReducer';
 import { AppStore } from '../store/store';
 
 const Home = () => {
+  console.log(localStorage.getItem('WeatherData'));
   const { loading } = useSelector((state: AppStore) => ({
     loading: state.app.isLoading,
   }));

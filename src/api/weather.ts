@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+
 const baseUrl = 'https://api.openweathermap.org/data/2.5';
 
 export const fetchWeatherData = async (city: string | { lat: number; lng: number }) => {
