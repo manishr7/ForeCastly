@@ -1,10 +1,14 @@
 const CACHE_NAME = "weather-app-cache";
-self.__WB_MANIFEST = self.__WB_MANIFEST || [];
+const urlsToCache = [
+    "/",
+    "/index.html",
+    "/static/js/main.d3cc92d5.js"
+  ];
 
 self.addEventListener("install", (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll(self.__WB_MANIFEST);    
+            return cache.addAll(urlsToCache);    
         })
     );
 });
@@ -16,9 +20,9 @@ self.addEventListener("fetch", (event) => {
             if (response) {
                 return response;
             }
-            // If no cached response, try to fetch from the network
+            
             return fetch(event.request).catch(() => {
-                // Optionally return a fallback response if network fetch fails
+                
                 return caches.match('/');
             });
         })
