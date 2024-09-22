@@ -8,6 +8,7 @@ import Search from '../components/Search/Search';
 import Spinner from '../components/ui/Spinner/Spinner';
 import CurrentWeather from '../components/CurrentWeather/CurrentWeather';
 import { setIsInitial } from '../store/reducers/appReducer';
+import { fetchWeather } from '../store/fetchWeather';
 import { AppStore } from '../store/store';
 
 const Home = () => {
@@ -17,9 +18,14 @@ const Home = () => {
   }));
   const dispatch = useDispatch();
   const CachedWeatherData= JSON.parse(localStorage.getItem('WeatherData') || 'null');
+  const DefaultCity="New York"
   useEffect(() => {
     if(CachedWeatherData){
     dispatch(setIsInitial(false));
+    }
+    else
+    {
+      dispatch(fetchWeather(DefaultCity));
     }
   }, [dispatch]); 
  useSelector((state: AppStore) => {
