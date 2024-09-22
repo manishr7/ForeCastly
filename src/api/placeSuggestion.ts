@@ -1,5 +1,5 @@
 export const fetchCities = async (search: string) => {
-  const apiKey = process.env.REACT_APP_WEATHER_API_KEY; 
+  const apiKey = process.env.REACT_APP_WEATHER_API; 
   const url = `https://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${apiKey}`;
 
   const res = await fetch(url);

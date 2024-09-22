@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ExtendedForecastData, WeatherData } from '../api/types';
 import { fetchExtendedForecastData, fetchWeatherData } from '../api/weather';
-import { getNextSevenDays } from '../utils/dateUtils';
+import { getNextFiveDays } from '../utils/dateUtils';
 import { kelvinToCelcius } from '../utils/unitConversion';
 import { setIsInitial, setIsLoading} from './reducers/appReducer';
 
@@ -46,14 +46,16 @@ export const transformWeatherData = (
   };
   weather.wind.speed = Math.round(weather.wind.speed * 3.6);
 
-  const next7Days = getNextSevenDays();
+  const next5Days = getNextFiveDays();
 
   res[1].list.forEach((i: any, index: number) => {
+    if (index >= 5) return;
+    console.log(index);
     forecast.push({
-      day: next7Days[index],
+      day: next5Days[index],
       temp: {
-        temp_max: kelvinToCelcius(i.temp.max),
-        temp_min: kelvinToCelcius(i.temp.min),
+        temp_max: kelvinToCelcius(i.main.temp_max),
+        temp_min: kelvinToCelcius(i.main.temp_min),
       },
       weather: {
         id: i.weather[0].id,
