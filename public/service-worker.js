@@ -2,7 +2,7 @@ const CACHE_NAME = "weather-app-cache";
 const urlsToCache = [
     "/",
     "/index.html",
-    "/static/js/main.d3cc92d5.js"
+    "/static/js/main.d1711662.js"
   ];
 
 self.addEventListener("install", (event) => {
