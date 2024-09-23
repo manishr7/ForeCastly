@@ -6,7 +6,7 @@ const urlsToCache = [
 ];
 
 // Install the service worker and cache the necessary resources
-self.addEventListener("install", (event) => {
+this.addEventListener("install", (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             return cache.addAll(urlsToCache);
@@ -15,7 +15,7 @@ self.addEventListener("install", (event) => {
 });
 
 // Intercept fetch requests
-self.addEventListener("fetch", (event) => {
+this.addEventListener("fetch", (event) => {
     event.respondWith(
         caches.match(event.request).then((response) => {
             // Return the cached response if it exists
