@@ -16,7 +16,7 @@ Weather App built with React.
 - **Find user location weather by utilizing Window GeolocationAPI**
 - **One-click Celcius to Fahrenheit conversion and vice versa**
 - **Dark Mode**
-- **Implemented caching to store the last searched city and its weather data for offline viewing**
+- **Implemented caching to store the last searched city and its weather data**
 ## Getting Started
 
 First you need an API key from OpenWeatherMap, you can get one by creating an account on their website.
